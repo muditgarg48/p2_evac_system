@@ -53,6 +53,18 @@ class Graph:
     def update_graph(self, x_c, y_c, val):
         self.graph[x_c][y_c] = val
 
+    def get_sum_of_edges(self, graph):
+        sum = 0
+        for i in graph:
+                for node in i:
+                    sum+=node
+        return sum
+
+    def will_activate(self, graph, lower_limit_of_congestion, upper_limit_of_congestion):
+        if self.get_sum_of_edges(graph) < lower_limit_of_congestion:
+            return False
+        elif self.get_sum_of_edges(graph) > upper_limit_of_congestion:
+            return True
 
 def get_graph():
     graph = [[0, 4, 0, 0, 0, 0, 0, 8, 0],
